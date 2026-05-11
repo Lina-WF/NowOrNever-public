@@ -126,7 +126,7 @@ export const resolvers = {
           const userId = userCostume.userId
           userCostume.things.forEach((thing) => {
             if (thing.link) {
-              deleteFile(thing.link, userId, userId)
+              deleteFile(context.event, thing.link, userId, userId)
             }
           })
         })
