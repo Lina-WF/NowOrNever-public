@@ -1,0 +1,10 @@
+[
+    { "id": 1, "login": "loginLina", "email": "email1@gmail.com", "password": "$argon2id$v=19$m=65536,t=3,p=4$0YvD++CP2huZpiOAJoYsSg$8xXnoA/grZ8GVvs1mv+3Z0agDf6HcvP+eH0dKSALlJs", "name": "Лина", "role": "admin" },
+    { "id": 2, "login": "loginTerry", "email": "email2@gmail.com", "password": "$argon2id$v=19$m=65536,t=3,p=4$rTT7NuZbdzV461mBScBC3Q$5CWUVxBmHcIqCuLoNliKFhIIHAOT8cJZbopAeLSIO2I", "name": "Терри", "role": "lider" },
+    { "id": 3, "login": "loginOlya", "email": "email3@gmail.com", "password": "$argon2id$v=19$m=65536,t=3,p=4$M20d/ci6aM82lZd1I/iz9Q$Ty9UZiIRNXJwilXts0MEqgI6MRhCfSUUo+GDo6gYIRs", "name": "Оля", "role": "member" },
+    { "id": 4, "login": "loginLera", "email": "email4@gmail.com", "password": "$argon2id$v=19$m=65536,t=3,p=4$7eRHDb6m9GSC2ZGaTHjyWA$rZmw+yckzDUoS9mg+9NFSscc5yswyE2QIsCEvf/OMlE", "name": "Лера", "role": "member" },
+    { "id": 5, "login": "loginSonya", "email": "email5@gmail.com", "password": "$argon2id$v=19$m=65536,t=3,p=4$kPwIk4iy3TK8wg4ojntWDQ$2fEZbHe2b0BkCoRAZCKUUhGN3yryRNvrkcJlQCUyW3U", "name": "Соня", "role": "member" },
+    { "id": 6, "login": "loginDiana", "email": "email6@gmail.com", "password": "$argon2id$v=19$m=65536,t=3,p=4$QIxpGrRlEWoC34qeQAG2og$GSeE2Vw1peqs4izoymZm1mnRDMm21ccKW1yv57s8ztE", "name": "Диана", "role": "member" },
+    { "id": 7, "login": "loginNika", "email": "email7@gmail.com", "password": "$argon2id$v=19$m=65536,t=3,p=4$7qzb5/G+XwsesAiDl75fKw$tdm9f6pW682Vwk0ym66SMAynqeT8VDF2qJt+9SQDseM", "name": "Ника", "role": "member" },
+    { "id": 8, "login": "loginLiza", "email": "email8@gmail.com", "password": "$argon2id$v=19$m=65536,t=3,p=4$ReckcrIEvRjJTI3nVinuwQ$hNJJOX3G8CYqeRusjHoefqNEo3EuGcyfxK/hwfKvQ0g", "name": "Лиза", "role": "member" }
+]

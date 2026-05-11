@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1777503980202,
+    "events": [
+      {
+        "title": "Репетиция",
+        "datetimeStart": "2026-04-04T12:00",
+        "datetimeEnd": "2026-04-04T15:00",
+        "color": "#3D70B2",
+        "desc": {
+          "address": "Дубровка, дом Х",
+          "price": 300,
+          "comment": ""
+        },
+        "id": 1777504199958
+      },
+      {
+        "title": "Репетиция",
+        "datetimeStart": "2026-04-11T12:00",
+        "datetimeEnd": "2026-04-11T15:00",
+        "color": "#267DC0",
+        "desc": {
+          "address": "Дубровка, дом Х",
+          "price": 300,
+          "comment": ""
+        },
+        "id": 1777504259893
+      },
+      {
+        "title": "Репетиция",
+        "datetimeStart": "2026-04-18T12:00",
+        "datetimeEnd": "2026-04-18T15:00",
+        "color": "#1B75C9",
+        "desc": {
+          "address": "Рязанский проспект, дом Y",
+          "price": 340,
+          "comment": ""
+        },
+        "id": 1777504306939
+      },
+      {
+        "title": "Чистка",
+        "datetimeStart": "2026-04-25T12:00",
+        "datetimeEnd": "2026-04-25T15:00",
+        "color": "#87209E",
+        "desc": {
+          "address": "Дубровка, дом Х",
+          "price": 300,
+          "comment": "Не забудьте повторить танец дома. \nБудем чистить припев и брейк."
+        },
+        "id": 1777504467051
+      },
+      {
+        "title": "Чистка",
+        "datetimeStart": "2026-05-09T12:00",
+        "datetimeEnd": "2026-05-09T15:00",
+        "color": "#761BAF",
+        "desc": {
+          "address": "Дубровка, дом Х",
+          "price": 0,
+          "comment": "Чистим парт Хонджуна и Минги. И брейк."
+        },
+        "id": 1777504577523
+      },
+      {
+        "title": "Чистка",
+        "datetimeStart": "2026-05-16T10:00",
+        "datetimeEnd": "2026-05-16T12:00",
+        "color": "#7E1DAF",
+        "desc": {
+          "address": "",
+          "price": 0,
+          "comment": "Дочищаем до конца. К этой репе должны быть готовы костюмы."
+        },
+        "id": 1777504666044
+      },
+      {
+        "title": "Ген. репетиция",
+        "datetimeStart": "2026-05-31T10:00",
+        "datetimeEnd": "2026-05-31T12:00",
+        "color": "#DF1A93",
+        "desc": {
+          "address": "",
+          "price": 0,
+          "comment": "Быть всем!!"
+        },
+        "id": 1777504723057
+      },
+      {
+        "title": "Съёмка",
+        "datetimeStart": "2026-06-06T12:00",
+        "datetimeEnd": "2026-06-06T15:00",
+        "color": "#CF0D0D",
+        "desc": {
+          "address": "Студия",
+          "price": 0,
+          "comment": "Не опаздывать!!"
+        },
+        "id": 1777504783067
+      },
+      {
+        "title": "лоиапцурлж",
+        "datetimeStart": "2026-04-09T16:00",
+        "datetimeEnd": "2026-04-10T02:00",
+        "color": "#24E755",
+        "desc": {
+          "address": "",
+          "price": 0,
+          "comment": ""
+        },
+        "id": 1777722289436
+      }
+    ]
+  },
+  {
+    "id": 1778505794961,
+    "events": [
+      {
+        "title": "vfv",
+        "datetimeStart": "2026-05-07T12:00",
+        "datetimeEnd": "2026-05-07T15:01",
+        "color": "#893131",
+        "desc": {
+          "address": "",
+          "price": 0,
+          "comment": ""
+        },
+        "id": 1778518180311
+      }
+    ]
+  }
+]

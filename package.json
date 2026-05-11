@@ -1,0 +1,39 @@
+{
+  "name": "now-or-never",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.5.0",
+    "@mdi/font": "^7.4.47",
+    "@nuxt/content": "^3.13.0",
+    "@nuxt/eslint": "^1.15.2",
+    "@nuxtjs/apollo": "^5.0.0-alpha.16",
+    "@nuxtjs/color-mode": "^4.0.0",
+    "@pinia/nuxt": "^0.11.3",
+    "@samk-dev/nuxt-vcalendar": "^1.0.4",
+    "@vee-validate/nuxt": "^4.15.1",
+    "@vee-validate/zod": "^4.15.1",
+    "animate.css": "^4.1.1",
+    "argon2": "^0.44.0",
+    "better-sqlite3": "^12.9.0",
+    "graphql-scalars": "^1.25.0",
+    "graphql-upload-minimal": "^1.6.4",
+    "gsap": "^3.15.0",
+    "jsonwebtoken": "^9.0.3",
+    "nitro-graphql": "^1.8.0",
+    "nitropack": "^2.13.3",
+    "nuxt": "^4.4.2",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
+    "vuetify-nuxt-module": "^0.19.5"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10"
+  }
+}

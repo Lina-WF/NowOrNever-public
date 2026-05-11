@@ -1,0 +1,86 @@
+.bg-transparent, .bg-themewhite{
+  color: rgb(var(--v-theme-darktext)) !important;
+}
+
+.bg-themewhite {
+  color: rgb(var(--v-theme-darktext)) !important
+}
+
+.box {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.bg-image {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('~/assets/logo.jpg');
+  background-size: contain;
+  background-position: center;
+  filter: blur(5px);
+  transform: scale(1);
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  background-color: #b7d0d75d;
+  padding: 2%;
+  border-radius: 5px;
+  border: 1px solid rgb(var(--v-theme-permanentDark));
+}
+
+.title{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 2% 0;
+  color: rgb(var(--v-theme-darktext)) !important;
+}
+
+.gradient-icon {
+  background: linear-gradient(315deg, rgb(var(--v-theme-accent)) 20%, rgb(var(--v-theme-secondary)) 40%, rgb(var(--v-theme-secondary)) 50%, rgb(var(--v-theme-accent)) 70%);
+  background-size: 300% 300%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  
+  display: inline-block;
+
+  animation: gradient-flow 8s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.long-skeleton .v-skeleton-loader__image {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.outlined-fieldset {
+  border: 2px solid rgb(var(--v-theme-darktext));
+  border-radius: 4px;
+  padding: 0;
+  transition: border-color 0.2s ease;
+}
+
+.v-input {
+    padding-bottom: 2%;
+}
+
+.dark {
+  background-color: #1e4461;
+}
+
+.permanentDark, .v-empty-state__headline {
+  color: rgb(var(--v-theme-permanentDark)) !important;
+}
