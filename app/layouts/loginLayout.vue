@@ -46,6 +46,7 @@ provide('animation', runEnterAnimation)
       <v-sheet
         ref="formSheetRef"
         class="mx-auto bg-transparent content"
+        min-width="300px"
       >
         <slot />
       </v-sheet>

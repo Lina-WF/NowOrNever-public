@@ -40,19 +40,5 @@
       }
     ],
     "link": "https://www.youtube.com/watch?v=jfkPmLKAL1c&list=RDjfkPmLKAL1c&start_radio=1"
-  },
-  {
-    "id": 1778505794961,
-    "dance": {
-      "group": "fds",
-      "title": "fasd"
-    },
-    "members": [
-      {
-        "userId": "1",
-        "part": "afdg"
-      }
-    ],
-    "link": "http://localhost:3000/project/newProject"
   }
 ]

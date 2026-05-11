@@ -19,7 +19,7 @@ const dialog = ref(false)
   <div class="d-flex justify-center align-center">
     <RouteBtn
       :text="'Назад'"
-      :link="''"
+      :link="'#'"
       @click="dialog = true"
     />
     <SubmitBtn

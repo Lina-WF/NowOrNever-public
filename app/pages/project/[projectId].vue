@@ -68,7 +68,7 @@ onMounted(() => {
         <ListOfLinks
           v-if="usersStore.user?.role==='admin'"
           :color="'accent'"
-          :things="[{ id: 1, title: 'Удалить', icon: 'mdi-delete-outline', link: '' }]"
+          :things="[{ id: 1, title: 'Удалить', icon: 'mdi-delete-outline', link: '#' }]"
           @click="dialog = true"
         />
         <ListOfLinks
