@@ -35,25 +35,30 @@ export const resolvers = {
     userByLogin: async (_, { login, password }, context) => {
       const event = context.event
       const config = useRuntimeConfig(event)
+      const user = users.find(u => u.login === login)
+      if (user) {
+        const is_valid = await decodePassword(context.event, user.password, password)
+        if (!is_valid) {
+          return null
+        }
+        else {
+          const token = jwt.sign(
+            {
+              id: user.id,
+              login: user.login,
+              role: user.role,
+            },
+            config.jwtSecret,
+            { expiresIn: '30d' },
+          )
 
-      const user = users.find(u => u.login === login && decodePassword(context.event, u.password, password))
-
-      if (!user) return null
-
-      const token = jwt.sign(
-        {
-          id: user.id,
-          login: user.login,
-          role: user.role,
-        },
-        config.jwtSecret,
-        { expiresIn: '30d' },
-      )
-
-      return {
-        ...user,
-        token,
+          return {
+            ...user,
+            token,
+          }
+        }
       }
+      else return null
     },
 
     project: (_, { id }) => projs.find(p => +p.id === +id),
