@@ -27,8 +27,8 @@ export const useUsersStore = defineStore('users', () => {
       user.value = res.data.userByLogin
       authStore.setJwt(res.data.userByLogin.token)
       localStorage.setItem('user', JSON.stringify(res.data.userByLogin))
-      return authStore.isAuthed
     }
+    return authStore.isAuthed
   }
 
   function logOut() {
