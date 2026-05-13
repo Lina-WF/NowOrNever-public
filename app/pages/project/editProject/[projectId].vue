@@ -2,7 +2,7 @@
 import ProjectForm from '~/components/form/projectForm.vue'
 
 definePageMeta({
-  middleware: 'admin-check',
+  middleware: ['admin-check', 'member-check'],
 })
 
 const projectsStore = useProjectsStore()
@@ -12,13 +12,6 @@ const route = useRoute()
 const idParam = computed(() => +(route.params.projectId as string))
 
 const proj = ref<Proj>(await projectsStore.findProject(idParam.value))
-
-if (!proj.value) {
-  navigateTo({
-    path: '/error',
-    state: { reason: 'Проект не найден', code: 404 },
-  }, { replace: true })
-}
 
 const members = computed(() => proj.value ? proj.value.members.filter((member: Member) => member.userId !== usersStore.user?.id).map(member => ({ userId: member.userId.toString(), part: member.part })) : [])
 const part = computed(() => proj.value ? proj.value.members.find((member: Member) => member.userId === usersStore.user?.id)!.part : '')

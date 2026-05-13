@@ -99,6 +99,35 @@ export const resolvers = {
       verifyAdmin(context.event)
       const index = projs.findIndex(p => +p.id === +id)
 
+      const oldMembers = (projs[index].members || []).map(m => +m.userId)
+      const removedUserIds = oldMembers.filter(userId => !members.map(m => +m.userId).includes(userId))
+
+      if (removedUserIds.length > 0) {
+        const projectCostumes = costumesData.find(c => +c.id === +id)
+
+        if (projectCostumes) {
+          removedUserIds.forEach((userId) => {
+            const userCostumeIndex = projectCostumes.costumes.findIndex(uc => +uc.userId === +userId)
+
+            if (userCostumeIndex !== -1) {
+              const userCostume = projectCostumes.costumes[userCostumeIndex]
+
+              if (userCostume.things) {
+                userCostume.things.forEach((thing) => {
+                  if (thing.link) {
+                    deleteFile(thing.link, userId, userId)
+                  }
+                })
+              }
+
+              projectCostumes.costumes.splice(userCostumeIndex, 1)
+            }
+          })
+
+          saveData('costumes', costumesData)
+        }
+      }
+
       const updatedProj = {
         ...projs[index],
         dance,
@@ -106,8 +135,8 @@ export const resolvers = {
         members,
       }
       projs[index] = updatedProj
-
       saveData('projects', projs)
+
       if (globalThis.broadcastWS) {
         globalThis.broadcastWS({
           type: 'projects',
@@ -126,7 +155,7 @@ export const resolvers = {
           const userId = userCostume.userId
           userCostume.things.forEach((thing) => {
             if (thing.link) {
-              deleteFile(context.event, thing.link, userId, userId)
+              deleteFile(thing.link, userId, userId)
             }
           })
         })
@@ -269,7 +298,7 @@ export const resolvers = {
           if (index !== -1) {
             const oldThing = userSection.things[index]
             if (thing.link && oldThing.link !== thing.link) {
-              deleteFile(context.event, oldThing.link, userId)
+              deleteFile(oldThing.link, userId, verifyUser(event).id)
             }
             userSection.things[index] = {
               ...thing,
@@ -301,7 +330,7 @@ export const resolvers = {
       if (projCostumes) {
         const userSection = projCostumes.costumes.find(u => +u.userId === +userId)
         if (userSection) {
-          deleteFile(context.event, userSection.things.find(t => +t.id === +thingId).link, userId)
+          deleteFile(userSection.things.find(t => +t.id === +thingId).link, userId, verifyUser(event).id)
           userSection.things = userSection.things.filter(t => +t.id !== +thingId)
           if (userSection.things.length === 0) {
             const userSectionIndex = projCostumes.costumes.findIndex(u => +u.userId === +userId)

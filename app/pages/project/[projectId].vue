@@ -7,18 +7,16 @@ import DeleteWarning from '~/components/modals/deleteWarning.vue'
 const route = useRoute()
 const idParam = computed(() => +(route.params.projectId as string))
 
+definePageMeta({
+  middleware: 'member-check',
+})
+
 const projectsStore = useProjectsStore()
 const membersStore = useMembersStore()
 const usersStore = useUsersStore()
 const socketStore = useSocketStore()
 
 const proj = ref<Proj>(await projectsStore.findProject(idParam.value))
-if (!proj.value) {
-  navigateTo({
-    path: '/error',
-    state: { reason: 'Проект не найден', code: 404 },
-  }, { replace: true })
-}
 
 const members = ref(await membersStore.findMembers(idParam.value))
 const sortedMembers = computed(() => members.value.length ? membersStore.sortMembers(members.value, usersStore.user) : [])
@@ -35,7 +33,6 @@ const dialog = ref(false)
 
 onMounted(() => {
   const unsubscribe = socketStore.onUpdateProject(async (projectId) => {
-    console.log(projectId, idParam.value)
     if (projectId === idParam.value) {
       proj.value = await projectsStore.findProject(idParam.value)
       if (!proj.value) {
@@ -43,6 +40,13 @@ onMounted(() => {
           path: '/error',
           state: { reason: 'Проект не найден', code: 404 },
         }, { replace: true })
+      }
+      members.value = await membersStore.findMembers(idParam.value)
+      if (members.value.filter(m => +m.id === +usersStore.user!.id).length !== 1) {
+        navigateTo({
+          path: '/error',
+          state: { reason: 'Вы не участник проекта', code: 403 },
+        })
       }
     }
   })

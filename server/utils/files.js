@@ -19,8 +19,9 @@ export const uploadFile = async (event) => {
   return { link: `${fileName}` }
 }
 
-export const deleteFile = (event, fileName, userId) => {
-  if (verifyUser(event).id !== +userId) {
+export const deleteFile = (fileName, userId, cookieId) => {
+  if (+cookieId !== +userId) {
+    console.log()
     const error = new Error('Ой, а у вас прав нет :(');
     (error).extensions = {
       code: 403,

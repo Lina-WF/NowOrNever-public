@@ -3,6 +3,10 @@ import RouteBtn from '~/components/btns/routeBtn.vue'
 import ListOfImgs from '~/components/lists/listOfImgs.vue'
 import ListOfText from '~/components/lists/listOfText.vue'
 
+definePageMeta({
+  middleware: 'member-check',
+})
+
 const route = useRoute()
 const idParam = computed(() => +(route.params.costumesId as string))
 
@@ -13,12 +17,6 @@ const socketStore = useSocketStore()
 const projectsStore = useProjectsStore()
 
 const proj = ref(await projectsStore.findProject(idParam.value))
-if (!proj.value) {
-  navigateTo({
-    path: '/error',
-    state: { reason: 'Проект не найден', code: 404 },
-  }, { replace: true })
-}
 
 const members = ref(await membersStore.findMembers(idParam.value))
 const costumes = ref<UserCostume[]>(await costumesStore.findCostumes(idParam.value))
@@ -26,7 +24,6 @@ const sortedMembers = computed(() => members.value.length ? membersStore.sortMem
 
 onMounted(() => {
   const unsubscribeCostumes = socketStore.onUpdateCostumes(async (costumesId) => {
-    console.log(costumesId, idParam.value)
     if (costumesId === idParam.value) {
       costumes.value = await costumesStore.findCostumes(idParam.value)
     }
@@ -39,6 +36,13 @@ onMounted(() => {
           path: '/error',
           state: { reason: 'Проект не найден', code: 404 },
         }, { replace: true })
+      }
+      members.value = await membersStore.findMembers(idParam.value)
+      if (members.value.filter(m => +m.id === +usersStore.user!.id).length !== 1) {
+        navigateTo({
+          path: '/error',
+          state: { reason: 'Вы не участник проекта', code: 403 },
+        })
       }
     }
   })

@@ -2,7 +2,7 @@
 import EventForm from '~/components/form/eventForm.vue'
 
 definePageMeta({
-  middleware: 'admin-check',
+  middleware: ['admin-check', 'member-check'],
 })
 
 const eventsStore = useEventsStore()
@@ -12,12 +12,6 @@ const route = useRoute()
 const idEvents = computed(() => +(route.params.eventsId as string))
 const idEvent = computed(() => +(route.params.eventId as string))
 const proj = ref(await projectsStore.findProject(idEvents.value))
-if (!proj.value) {
-  navigateTo({
-    path: '/error',
-    state: { reason: 'Проект не найден', code: 404 },
-  }, { replace: true })
-}
 const events = ref(await eventsStore.findEvents(idEvents.value))
 const event = computed(() => {
   const es = events.value.find((e: ProjEvent) => +e.id === idEvent.value)

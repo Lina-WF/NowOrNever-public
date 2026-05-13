@@ -6,6 +6,10 @@ import CalendarHeader from '~/components/calendarHeader.vue'
 import RouteBtn from '~/components/btns/routeBtn.vue'
 import AdminTimeModal from '~/components/modals/adminTimeModal.vue'
 
+definePageMeta({
+  middleware: 'member-check',
+})
+
 const route = useRoute()
 const idParam = computed(() => +(route.params.eventsId as string))
 
@@ -15,12 +19,6 @@ const socketStore = useSocketStore()
 const eventsStore = useEventsStore()
 
 const proj = ref(await projectsStore.findProject(idParam.value))
-if (!proj.value) {
-  navigateTo({
-    path: '/error',
-    state: { reason: 'Проект не найден', code: 404 },
-  }, { replace: true })
-}
 const events = ref(await eventsStore.findEvents(idParam.value))
 const calendar = ref()
 
@@ -119,6 +117,14 @@ onMounted(() => {
           path: '/error',
           state: { reason: 'Проект не найден', code: 404 },
         }, { replace: true })
+      }
+      const membersStore = useMembersStore()
+      const members = await membersStore.findMembers(idParam.value)
+      if (members.filter(m => +m.id === +usersStore.user!.id).length !== 1) {
+        navigateTo({
+          path: '/error',
+          state: { reason: 'Вы не участник проекта', code: 403 },
+        })
       }
     }
   })

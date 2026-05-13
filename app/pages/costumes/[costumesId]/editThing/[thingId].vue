@@ -1,19 +1,16 @@
 <script setup lang="ts">
 import ThingForm from '~/components/form/thingForm.vue'
 
+definePageMeta({
+  middleware: 'member-check',
+})
+
 const costumesStore = useCostumesStore()
 const usersStore = useUsersStore()
-const projectsStore = useProjectsStore()
 
 const route = useRoute()
 const idCostumes = computed(() => +(route.params.costumesId as string))
-const proj = ref(await projectsStore.findProject(idCostumes.value))
-if (!proj.value) {
-  navigateTo({
-    path: '/error',
-    state: { reason: 'Проект не найден', code: 404 },
-  }, { replace: true })
-}
+
 const idThing = computed(() => +(route.params.thingId as string))
 const costumes = ref(await costumesStore.findCostumes(idCostumes.value))
 const costume = computed(() => costumes.value.length ? costumes.value.find((c: UserCostume) => usersStore.user ? +c.userId === +usersStore.user.id : []) : null)
