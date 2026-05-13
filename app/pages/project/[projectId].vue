@@ -31,10 +31,18 @@ const membersThings = computed(() => sortedMembers.value.map(member => ({ id: me
 
 const dialog = ref(false)
 
+async function del() {
+  dialog.value = false
+  await navigateTo('/')
+  projectsStore.delProject(idParam.value)
+}
+
 onMounted(() => {
   const unsubscribe = socketStore.onUpdateProject(async (projectId) => {
     if (projectId === idParam.value) {
+      const route = useRoute()
       proj.value = await projectsStore.findProject(idParam.value)
+      console.log(route.fullPath)
       if (!proj.value) {
         navigateTo({
           path: '/error',
@@ -91,7 +99,7 @@ onMounted(() => {
           :element="'project'"
           :title="`${proj?.dance.group} — ${proj?.dance.title}`"
           @no="dialog=false"
-          @yes="dialog=false; projectsStore.delProject(idParam); navigateTo('/')"
+          @yes="del"
         />
       </v-skeleton-loader>
     </template>

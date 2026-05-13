@@ -37,7 +37,6 @@ export const useSocketStore = defineStore('socket', () => {
       }
 
       if (message.type === 'costumes') {
-        console.log(+message.costumesId)
         costumesListeners.forEach(cb => cb(+message.costumesId))
       }
     }

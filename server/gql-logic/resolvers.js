@@ -298,7 +298,7 @@ export const resolvers = {
           if (index !== -1) {
             const oldThing = userSection.things[index]
             if (thing.link && oldThing.link !== thing.link) {
-              deleteFile(oldThing.link, userId, verifyUser(event).id)
+              deleteFile(oldThing.link, userId, verifyUser(context.event).id)
             }
             userSection.things[index] = {
               ...thing,
@@ -330,7 +330,7 @@ export const resolvers = {
       if (projCostumes) {
         const userSection = projCostumes.costumes.find(u => +u.userId === +userId)
         if (userSection) {
-          deleteFile(userSection.things.find(t => +t.id === +thingId).link, userId, verifyUser(event).id)
+          deleteFile(userSection.things.find(t => +t.id === +thingId).link, userId, verifyUser(context.event).id)
           userSection.things = userSection.things.filter(t => +t.id !== +thingId)
           if (userSection.things.length === 0) {
             const userSectionIndex = projCostumes.costumes.findIndex(u => +u.userId === +userId)
