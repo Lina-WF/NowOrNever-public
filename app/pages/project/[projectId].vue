@@ -38,6 +38,12 @@ onMounted(() => {
     console.log(projectId, idParam.value)
     if (projectId === idParam.value) {
       proj.value = await projectsStore.findProject(idParam.value)
+      if (!proj.value) {
+        navigateTo({
+          path: '/error',
+          state: { reason: 'Проект не найден', code: 404 },
+        }, { replace: true })
+      }
     }
   })
 

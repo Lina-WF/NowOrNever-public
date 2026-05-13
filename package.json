@@ -29,8 +29,6 @@
     "nitro-graphql": "^1.8.0",
     "nitropack": "^2.13.3",
     "nuxt": "^4.4.2",
-    "socket.io": "^4.8.3",
-    "socket.io-client": "^4.8.3",
     "vuetify-nuxt-module": "^0.19.5"
   },
   "devDependencies": {
