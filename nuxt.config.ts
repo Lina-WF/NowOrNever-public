@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     '@samk-dev/nuxt-vcalendar',
     '@nuxtjs/color-mode',
   ],
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   app: {
     head: {
       title: 'Now or Never',
